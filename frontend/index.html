@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoteSmart AI - Election Process Education</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css?v=2">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-check-to-slot"></i>
+                <span>VoteSmart AI</span>
+            </div>
+            
+            <div class="language-selector">
+                <i class="fa-solid fa-language"></i>
+                <select id="app-language">
+                    <option value="English">English</option>
+                    <option value="Hindi">हिन्दी (Hindi)</option>
+                    <option value="Spanish">Español (Spanish)</option>
+                    <option value="Bengali">বাংলা (Bengali)</option>
+                    <option value="Tamil">தமிழ் (Tamil)</option>
+                    <option value="Telugu">తెలుగు (Telugu)</option>
+                </select>
+            </div>
+
+            <div class="nav-menu">
+                <button class="nav-item active" data-target="chat">
+                    <i class="fa-solid fa-message"></i> Assistant
+                </button>
+                <button class="nav-item" data-target="timeline">
+                    <i class="fa-solid fa-timeline"></i> Election Timeline
+                </button>
+                <button class="nav-item" data-target="steps">
+                    <i class="fa-solid fa-list-ol"></i> Voting Steps
+                </button>
+                <button class="nav-item" data-target="map">
+                    <i class="fa-solid fa-map-location-dot"></i> Polling Station
+                </button>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="powered-by">
+                    <i class="fa-brands fa-google"></i> Powered by Google Gemini
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Chat Section -->
+            <section id="chat-section" class="content-section active">
+                <header class="section-header">
+                    <h1>Election Assistant</h1>
+                    <p>Ask anything. Use the microphone to speak your question, and the speaker icon to hear the answer.</p>
+                </header>
+                
+                <div class="chat-container">
+                    <div class="chat-messages" id="chat-messages">
+                        <div class="message bot-message">
+                            <div class="avatar"><i class="fa-solid fa-robot"></i></div>
+                            <div class="message-content">
+                                Hello! I'm VoteSmart AI. I can help you understand the election process. You can speak to me in any language!
+                            </div>
+                            <button class="tts-btn" onclick="speakText('Hello! I\'m VoteSmart AI. I can help you understand the election process. You can speak to me in any language!')" title="Listen to message"><i class="fa-solid fa-volume-high"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-input-wrapper">
+                        <form id="chat-form">
+                            <button type="button" id="mic-btn" title="Click to Speak">
+                                <i class="fa-solid fa-microphone"></i>
+                            </button>
+                            <input type="text" id="user-input" placeholder="Type your question or use the mic..." required autocomplete="off">
+                            <button type="submit" id="send-btn">
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Timeline Section -->
+            <section id="timeline-section" class="content-section">
+                <!-- Keep existing timeline content -->
+                <header class="section-header">
+                    <h1>Election Timeline</h1>
+                    <p>Key dates and milestones for the upcoming election.</p>
+                </header>
+                <div class="timeline-container">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">Phase 1</div>
+                            <div class="timeline-content">
+                                <h3>Voter Registration Begins</h3>
+                                <p>Ensure you are registered to vote before the deadline.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Phase 2</div>
+                            <div class="timeline-content">
+                                <h3>Candidate Nominations</h3>
+                                <p>Political parties finalize and announce their candidates.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Phase 3</div>
+                            <div class="timeline-content">
+                                <h3>Campaigning Period</h3>
+                                <p>Candidates hold rallies, debates, and public outreach.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Phase 4</div>
+                            <div class="timeline-content">
+                                <h3>Election Day</h3>
+                                <p>Cast your vote at your designated polling station.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Phase 5</div>
+                            <div class="timeline-content">
+                                <h3>Results Declaration</h3>
+                                <p>Votes are counted and official results are published.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Steps Section -->
+            <section id="steps-section" class="content-section">
+                <!-- Keep existing steps content -->
+                <header class="section-header">
+                    <h1>How to Vote</h1>
+                    <p>A simple guide to casting your ballot.</p>
+                </header>
+                <div class="cards-container">
+                    <div class="step-card">
+                        <div class="step-icon"><i class="fa-solid fa-id-card"></i></div>
+                        <h3>1. Check Registration</h3>
+                        <p>Verify your name is on the electoral roll.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                        <h3>2. Find Polling Booth</h3>
+                        <p>Locate your designated voting station online or via SMS.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-icon"><i class="fa-solid fa-address-card"></i></div>
+                        <h3>3. Carry Valid ID</h3>
+                        <p>Bring your Voter ID or any approved government identification.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-icon"><i class="fa-solid fa-person-booth"></i></div>
+                        <h3>4. Cast Your Vote</h3>
+                        <p>Follow instructions at the booth to register your choice securely.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Map Section -->
+            <section id="map-section" class="content-section">
+                <header class="section-header">
+                    <h1>Find Polling Station</h1>
+                    <p>Explore voting locations near you using Google Maps.</p>
+                </header>
+                <div class="map-container">
+                    <div class="map-search">
+                        <input type="text" id="map-query" placeholder="Enter your city or zip code...">
+                        <button id="search-map-btn">Search Location</button>
+                    </div>
+                    <!-- Generic google maps embed iframe -->
+                    <iframe id="gmap-iframe" 
+                        width="100%" 
+                        height="450" 
+                        style="border:0; border-radius: 12px; margin-top: 20px;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        src="https://maps.google.com/maps?q=polling+station&t=&z=13&ie=UTF8&iwloc=&output=embed">
+                    </iframe>
+                    <p style="margin-top: 15px; color: var(--text-secondary); font-size: 14px;">
+                        <em>* Embedded via Google Maps API. Search for your locality to find generic polling centers.</em>
+                    </p>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="script.js?v=3"></script>
+</body>
+</html>
