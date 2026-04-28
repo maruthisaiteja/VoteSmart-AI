@@ -218,7 +218,7 @@
         window.initMap = function() {
             const mapDiv = document.getElementById('dynamic-map');
             if (mapDiv) {
-                mapDiv.innerHTML = '<iframe width="100%" height="100%" style="border:0; border-radius: 12px;" allowfullscreen="" loading="lazy" src="https://maps.google.com/maps?q=polling+station&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>';
+                mapDiv.innerHTML = '<iframe id="gmap-iframe" width="100%" height="100%" style="border:0; border-radius: 12px;" allowfullscreen="" loading="lazy" src="https://maps.google.com/maps?q=polling+station&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>';
             }
         };
     </script>

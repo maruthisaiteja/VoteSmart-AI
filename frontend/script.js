@@ -61,7 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if(searchMapBtn && mapQuery) {
         const performSearch = () => {
             const query = mapQuery.value.trim();
-            if(query) {
+            const gmapIframe = document.getElementById('gmap-iframe');
+            if(query && gmapIframe) {
                 // Use a more robust Maps embed URL format
                 const encodedQuery = encodeURIComponent(query);
                 gmapIframe.src = `https://maps.google.com/maps?width=100%25&height=600&hl=en&q=${encodedQuery}&t=&z=14&ie=UTF8&iwloc=B&output=embed`;

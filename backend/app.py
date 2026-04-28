@@ -53,6 +53,10 @@ csp = {
         '\'unsafe-inline\'',
         'https://fonts.googleapis.com',
         'https://cdnjs.cloudflare.com'
+    ],
+    'frame-src': [
+        '\'self\'',
+        'https://maps.google.com'
     ]
 }
 # Content Security Policy disabled in development if needed, but enabled here for strict security
