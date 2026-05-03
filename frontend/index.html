@@ -49,17 +49,17 @@
                 </select>
             </div>
 
-            <nav class="nav-menu" aria-label="Sidebar Menu">
-                <button class="nav-item active" data-target="chat" aria-label="Go to Assistant">
+            <nav class="nav-menu" role="navigation" aria-label="Main Navigation">
+                <button class="nav-item active" data-target="chat" aria-label="Open Assistant Tab">
                     <i class="fa-solid fa-message" aria-hidden="true"></i> Assistant
                 </button>
-                <button class="nav-item" data-target="timeline" aria-label="Go to Election Timeline">
+                <button class="nav-item" data-target="timeline" aria-label="Open Election Timeline Tab">
                     <i class="fa-solid fa-timeline" aria-hidden="true"></i> Election Timeline
                 </button>
-                <button class="nav-item" data-target="steps" aria-label="Go to Voting Steps">
+                <button class="nav-item" data-target="steps" aria-label="Open Voting Steps Tab">
                     <i class="fa-solid fa-list-ol" aria-hidden="true"></i> Voting Steps
                 </button>
-                <button class="nav-item" data-target="map" aria-label="Go to Polling Station Map">
+                <button class="nav-item" data-target="map" aria-label="Open Polling Station Map Tab">
                     <i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> Polling Station
                 </button>
             </nav>
@@ -93,13 +93,13 @@
                     </div>
                     
                     <div class="chat-input-wrapper">
-                        <form id="chat-form" aria-label="Chat Input Form">
-                            <button type="button" id="mic-btn" aria-label="Click to Speak">
+                        <form id="chat-form" aria-label="Chat input form">
+                            <button type="button" id="mic-btn" title="Click to Speak" aria-label="Activate voice input">
                                 <i class="fa-solid fa-microphone" aria-hidden="true"></i>
                             </button>
                             <label for="user-input" style="display: none;">Type your question</label>
-                            <input type="text" id="user-input" placeholder="Type your question or use the mic..." required autocomplete="off" aria-label="Type your question or use the mic">
-                            <button type="submit" id="send-btn" aria-label="Send Message">
+                            <input type="text" id="user-input" placeholder="Type your question or use the mic..." required autocomplete="off" aria-label="Type your message">
+                            <button type="submit" id="send-btn" aria-label="Send message">
                                 <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
                             </button>
                         </form>

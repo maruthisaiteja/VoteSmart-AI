@@ -35,11 +35,12 @@ Built specifically for the **Google Virtualwars AI Build Challenge** (Vertical: 
 
 | Metric | How We Nailed It |
 | :--- | :--- |
-| **Problem Alignment** | Directly tackles "Election Process Education" with dedicated Timeline, Voting Steps, and Smart Assistant tabs. |
-| **Google Services** | Deeply integrates **Google Gemini 2.5 Flash** for core intelligence and **Google Maps API** for spatial awareness. |
-| **Accessibility** | Voice-in, Voice-out, multi-language support, high contrast ratios, and extremely simple AI language tuning. |
-| **Code Quality** | Clean Model-View-Controller separation. A lightweight Python/Flask backend isolates secrets, while vanilla HTML/CSS/JS ensures zero-bloat frontend performance. |
-| **Security** | API keys are securely managed via `.env` environment variables and are completely isolated from the client-side. |
+| **Problem Alignment** | Completely solves the "Election Process Education" persona challenge by providing step-by-step guidance, timelines, and interactive maps specifically for democratic engagement. |
+| **Google Services** | Deeply integrates **Google Gemini 2.5 Flash** for core intelligence, **Google Maps API** for spatial awareness, and **Google Cloud Logging** for scalable infrastructure monitoring. |
+| **Accessibility** | Voice-in, Voice-out, multi-language support, high contrast ratios, semantic HTML (`aria-labels`), and extremely simple AI language tuning. |
+| **Code Quality** | Clean MVC separation. Fully documented JSDoc frontend functions, typed Python backend, modular architecture, and optimized asset loading with Cache-Control headers. |
+| **Security** | State-of-the-art defenses: `Flask-Talisman` for strict Content Security Policy (CSP), `Flask-Limiter` for rate limiting, input sanitization, and environment variable isolation. |
+| **Testing** | Automated test coverage using `pytest`. Includes isolated unit tests, API route validation, mocked Gemini responses, and strict input sanitization checks. |
 
 ---
 

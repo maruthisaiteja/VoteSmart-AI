@@ -23,12 +23,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchMapBtn = document.getElementById('search-map-btn');
     const gmapIframe = document.getElementById('gmap-iframe');
 
-    // Chat functionality
-    chatForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const message = userInput.value.trim();
-        if (!message) return;
-
+    /**
+     * Sends the user message to the backend API and handles the response.
+     * @param {string} message - The user's input message.
+     * @param {string} language - The selected language for the response.
+     */
+    async function handleChatSubmission(message, language) {
         appendMessage('user', message);
         userInput.value = '';
         const loadingId = showLoading();
@@ -37,14 +37,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const response = await fetch('/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ 
-                    message: message,
-                    language: languageSelect.value 
-                })
+                body: JSON.stringify({ message, language })
             });
 
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
             const data = await response.json();
-            document.getElementById(loadingId).remove();
+            document.getElementById(loadingId)?.remove();
 
             if (data.error) {
                 appendMessage('bot', `Error: ${data.error}`);
@@ -52,9 +53,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 appendMessage('bot', data.reply, true);
             }
         } catch (error) {
-            document.getElementById(loadingId).remove();
+            console.error("Chat API Error:", error);
+            document.getElementById(loadingId)?.remove();
             appendMessage('bot', 'Sorry, I encountered a network error. Please try again.');
         }
+    }
+
+    // Chat form submission handler
+    chatForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const message = userInput.value.trim();
+        if (!message) return;
+        handleChatSubmission(message, languageSelect.value);
     });
 
     // Map Search Functionality
@@ -127,6 +137,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if(micBtn) micBtn.style.display = 'none'; // Hide if not supported
     }
 
+    /**
+     * Appends a message to the chat interface.
+     * @param {'user'|'bot'} sender - The sender of the message.
+     * @param {string} text - The message text.
+     * @param {boolean} [isMarkdown=false] - Whether the text is markdown formatted.
+     */
     function appendMessage(sender, text, isMarkdown = false) {
         const msgDiv = document.createElement('div');
         msgDiv.className = `message ${sender}-message`;
@@ -156,6 +172,10 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollToBottom();
     }
 
+    /**
+     * Displays a loading animation in the chat.
+     * @returns {string} The unique ID of the loading element.
+     */
     function showLoading() {
         const id = 'loading-' + Date.now();
         const msgDiv = document.createElement('div');
@@ -176,10 +196,18 @@ document.addEventListener('DOMContentLoaded', () => {
         return id;
     }
 
+    /**
+     * Scrolls the chat interface to the latest message.
+     */
     function scrollToBottom() {
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
+    /**
+     * Escapes HTML characters to prevent XSS.
+     * @param {string} unsafe - The raw string to escape.
+     * @returns {string} The escaped, safe string.
+     */
     function escapeHtml(unsafe) {
         return unsafe
              .replace(/&/g, "&amp;")
@@ -190,7 +218,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Global Text to Speech function
+/**
+ * Global Text to Speech function for reading bot responses out loud.
+ * @param {string} text - The text to be spoken.
+ */
 window.speakText = function(text) {
     if (!window.speechSynthesis) {
         alert("Your browser does not support text-to-speech.");
