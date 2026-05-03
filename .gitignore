@@ -1,6 +1,14 @@
-venv/
+# Env files
+.env
+.env.*
+!.env.example
+
+# Python
 __pycache__/
 *.pyc
-.env
-.env.example
+
+# Virtual env
+venv/
+
+# OS
 .DS_Store
